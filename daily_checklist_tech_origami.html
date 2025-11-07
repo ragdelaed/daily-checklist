@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mon–Fri Daily Checklist with Tech Zones & Origami Focus</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #f5f5f5;
+      color: #222;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 4px;
+    }
+    .meta {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: #555;
+    }
+    .legend {
+      text-align: center;
+      font-size: 12px;
+      margin-bottom: 16px;
+    }
+    .legend span {
+      padding: 4px 8px;
+      border-radius: 4px;
+      margin: 0 4px;
+      display: inline-block;
+    }
+    .tech-on {
+      background: #e5f7ea;
+      border-left: 4px solid #2e7d32;
+    }
+    .tech-off {
+      background: #ffecec;
+      border-left: 4px solid #c62828;
+    }
+    .day-section {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+      page-break-inside: avoid;
+    }
+    .day-label {
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: #111;
+    }
+    .block-title {
+      font-weight: bold;
+      margin-top: 10px;
+      margin-bottom: 4px;
+      font-size: 14px;
+      color: #333;
+    }
+    .checklist-item {
+      font-size: 13px;
+      margin: 2px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .checklist-item input {
+      margin-top: 2px;
+    }
+    .quote {
+      font-size: 12px;
+      font-style: italic;
+      color: #555;
+      margin-left: 22px;
+      margin-bottom: 4px;
+    }
+    details {
+      margin-left: 22px;
+      margin-top: 2px;
+      margin-bottom: 4px;
+      font-size: 12px;
+    }
+    details summary {
+      cursor: pointer;
+      font-weight: bold;
+      color: #444;
+    }
+    details ul {
+      margin: 4px 0 0 16px;
+      padding: 0;
+    }
+    details li {
+      margin: 1px 0;
+      list-style-type: disc;
+    }
+    .weekly-theme {
+      margin-top: 8px;
+      font-size: 12px;
+      color: #444;
+    }
+    .time-band-label {
+      font-size: 11px;
+      font-weight: bold;
+      margin: 4px 0 2px 0;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Daily Checklist (Monday – Friday)</h1>
+  <div class="meta">
+    Wake: 9:00 AM &nbsp;|&nbsp; Sleep: 10:00 PM &nbsp;|&nbsp;
+    3 Meals · No Snacks · Light Exercise · Meditation · Focused Self-Study · Origami Practice
+  </div>
+  <div class="legend">
+    <span style="background:#e5f7ea;border:1px solid #2e7d32;">Tech-On (Allowed / Purposeful)</span>
+    <span style="background:#ffecec;border:1px solid #c62828;">Tech-Off (No Devices)</span>
+  </div>
+
+  <!-- Template applies Monday–Friday identically -->
+  <div class="day-section">
+    <div class="day-label">Monday – Friday Schedule</div>
+
+    <!-- Morning: Tech-Off -->
+    <div class="block-title">🌅 Morning Routine (9:00 AM – 11:00 AM)</div>
+    <div class="time-band-label tech-off">📵 Tech-Off (9:00 – 11:00) — No phone or computer.</div>
+    <label class="checklist-item"><input type="checkbox">9:00 – Wake &amp; ground (water, make bed, open window)</label>
+    <label class="checklist-item"><input type="checkbox">9:10 – Morning affirmation &amp; reflection</label>
+    <div class="quote">“The Master acts without doing, and everything gets done.” — Tao Te Ching</div>
+    <div class="quote">“You have power over your mind — not outside events.” — Marcus Aurelius</div>
+    <label class="checklist-item"><input type="checkbox">9:30 – 10:00 – 30 min light exercise (stretch / walk / yoga)</label>
+    <label class="checklist-item"><input type="checkbox">10:00 – Breakfast (mindful, no screens)</label>
+    <label class="checklist-item"><input type="checkbox">10:30 – Plan the day in notebook (top 3 priorities)</label>
+    <details>
+      <summary>📖 Optional Reading (10:45 – 11:00)</summary>
+      <ul>
+        <li><em>Meditations</em> — Marcus Aurelius</li>
+        <li><em>Tao Te Ching</em> — Lao Tzu (Stephen Mitchell translation)</li>
+        <li><em>The Daily Stoic</em> — Ryan Holiday</li>
+      </ul>
+    </details>
+
+    <!-- Midday: Mixed -->
+    <div class="block-title">☀️ Midday Focus (11:00 AM – 2:00 PM)</div>
+    <div class="time-band-label tech-on">💻 Tech-On (11:00 – 12:00) — Study tools allowed.</div>
+    <label class="checklist-item"><input type="checkbox">11:00 – 12:00 – Self-Study #1: Rubik’s Cube (algorithms, pattern recognition, timing)</label>
+
+    <label class="checklist-item"><input type="checkbox">12:00 – Reflection quote: “An investment in knowledge pays the best interest.” — Benjamin Franklin</label>
+
+    <div class="time-band-label tech-off">📵 Tech-Off (12:30 – 1:00) — Mindful lunch.</div>
+    <label class="checklist-item"><input type="checkbox">12:30 – Lunch (no phone, no scrolling, gratitude before eating)</label>
+    <details>
+      <summary>📖 Optional Reading (12:45 – 1:00)</summary>
+      <ul>
+        <li><em>Letters from a Stoic</em> — Seneca</li>
+        <li><em>Stillness is the Key</em> — Ryan Holiday</li>
+      </ul>
+    </details>
+
+    <div class="time-band-label tech-on">💻 Tech-On (1:00 – 2:00) — Purposeful only.</div>
+    <label class="checklist-item"><input type="checkbox">1:00 – 2:00 – Self-Study #2: Khan Academy (1 focused course/module)</label>
+
+    <!-- Afternoon: Origami Research & Practice -->
+    <div class="block-title">🌇 Afternoon Rhythm (2:00 PM – 6:00 PM)</div>
+    <div class="time-band-label tech-on">💻 Tech-On (2:00 – 3:00) — Research allowed.</div>
+    <label class="checklist-item"><input type="checkbox">
+      2:00 – 3:00 – Self-Study #3: Ancient Chinese Origami Research
+      (history, symbolism, traditional folds)
+    </label>
+    <details>
+      <summary>🔍 Suggested Research Threads</summary>
+      <ul>
+        <li>Origins of paper folding in China and its relationship to ceremony and art.</li>
+        <li>Symbolism of cranes, lotus, and other traditional folded forms.</li>
+        <li>Comparison between early Chinese folding traditions and later Japanese origami.</li>
+      </ul>
+    </details>
+
+    <div class="time-band-label tech-off">📵 Tech-Off (3:00 – 4:00) — Hands-on deep work.</div>
+    <label class="checklist-item"><input type="checkbox">
+      3:00 – 4:00 – Deep Work: Origami Practice
+      (fold models from your research; work slowly and precisely)
+    </label>
+
+    <div class="time-band-label tech-off">📵 Tech-Off (4:00 – 5:30) — Reset & reading.</div>
+    <label class="checklist-item"><input type="checkbox">4:00 – Short reset (walk, stretch, breathe)</label>
+    <details>
+      <summary>📖 Reading Block (4:30 – 5:15)</summary>
+      <ul>
+        <li><em>Man’s Search for Meaning</em> — Viktor E. Frankl</li>
+        <li><em>The Book of Joy</em> — Dalai Lama &amp; Desmond Tutu</li>
+        <li><em>Atomic Habits</em> — James Clear</li>
+      </ul>
+    </details>
+    <label class="checklist-item"><input type="checkbox">5:30 – Dinner (no devices, slow and present)</label>
+
+    <!-- Evening -->
+    <div class="block-title">🌙 Evening Wind-Down (6:00 PM – 10:00 PM)</div>
+    <div class="time-band-label tech-off">📵 Tech-Off (6:00 – 8:30) — Deep rest & analog time.</div>
+    <label class="checklist-item"><input type="checkbox">
+      6:00 – 7:00 – Leisure / creative time
+      (journaling, sketching, origami, music, conversation)
+    </label>
+    <label class="checklist-item"><input type="checkbox">7:00 – 7:30 – 30 min meditation (breath, body scan, or guided)</label>
+    <label class="checklist-item"><input type="checkbox">7:30 – 8:15 – Reflection & reading (3 wins, 1 improvement)</label>
+    <details>
+      <summary>📖 Evening Reading Suggestions</summary>
+      <ul>
+        <li><em>The Four Agreements</em> — Don Miguel Ruiz</li>
+        <li><em>The Untethered Soul</em> — Michael A. Singer</li>
+        <li><em>The Art of Happiness</em> — Dalai Lama</li>
+      </ul>
+    </details>
+
+    <div class="time-band-label tech-on">💻 Light Tech (8:30 – 9:30) — Audio only.</div>
+    <label class="checklist-item"><input type="checkbox">
+      8:30 – 9:30 – Optional: calming audiobook or instrumental music
+      (no social media, no infinite scrolling)
+    </label>
+
+    <div class="time-band-label tech-off">📵 Tech-Off (9:30 – 10:00) — Close the day.</div>
+    <label class="checklist-item"><input type="checkbox">9:30 – Night affirmation &amp; gratitude</label>
+    <div class="quote">“Waste no more time arguing what a good man should be. Be one.” — Marcus Aurelius</div>
+    <div class="quote">“A journey of a thousand miles begins with a single step.” — Tao Te Ching</div>
+    <label class="checklist-item"><input type="checkbox">10:00 – Sleep (no screens, slow breathing, lights out)</label>
+
+    <!-- Weekly Themes -->
+    <div class="block-title">💡 Weekly Themes (Applies Across All Days)</div>
+    <div class="weekly-theme"><strong>Monday – Clarity:</strong> Begin with order and intention.</div>
+    <div class="weekly-theme"><strong>Tuesday – Discipline:</strong> “Well done is better than well said.” — Benjamin Franklin</div>
+    <div class="weekly-theme"><strong>Wednesday – Learning:</strong> Treat Rubik’s, Khan Academy, and origami as training the mind.</div>
+    <div class="weekly-theme"><strong>Thursday – Gratitude:</strong> Notice consistency and progress, not perfection.</div>
+    <div class="weekly-theme"><strong>Friday – Reflection:</strong> Review the system, adjust one small thing for next week.</div>
+  </div>
+</body>
+</html>
