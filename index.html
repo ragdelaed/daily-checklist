@@ -1,211 +1,355 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Mon–Fri Daily Checklist with Tech Zones & Origami Focus</title>
+  <title>Daily Checklist – Tech & Origami</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    :root {
+      --bg: #fafafa;
+      --card-bg: #ffffff;
+      --text-main: #1f2933;
+      --text-sub: #6b7280;
+      --accent-on: #e5f7ea;
+      --accent-off: #ffecec;
+      --border-on: #22a05a;
+      --border-off: #e53935;
+      --radius: 14px;
+      --shadow: 0 2px 6px rgba(0,0,0,0.06);
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      background: #f5f5f5;
-      color: #222;
+      margin: 0;
+      padding: 10px;
+      font-family: var(--font-main);
+      background: var(--bg);
+      color: var(--text-main);
     }
+
     h1 {
+      font-size: 20px;
       text-align: center;
-      margin-bottom: 4px;
+      margin: 4px 0 2px;
     }
+
     .meta {
       text-align: center;
-      margin-bottom: 20px;
-      font-size: 14px;
-      color: #555;
+      font-size: 11px;
+      color: var(--text-sub);
+      margin-bottom: 8px;
+      line-height: 1.4;
     }
+
     .legend {
-      text-align: center;
-      font-size: 12px;
-      margin-bottom: 16px;
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      flex-wrap: wrap;
+      font-size: 9px;
+      margin-bottom: 10px;
     }
+
     .legend span {
-      padding: 4px 8px;
-      border-radius: 4px;
-      margin: 0 4px;
+      padding: 3px 6px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.06);
+      white-space: nowrap;
+    }
+
+    .screen-note {
+      text-align: center;
+      font-size: 9px;
+      color: var(--text-sub);
+      margin-bottom: 8px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 10px 10px 8px;
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      font-weight: 600;
+      font-size: 14px;
+      margin-bottom: 2px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .time {
+      font-size: 9px;
+      color: var(--text-sub);
+    }
+
+    .band-label {
+      font-size: 9px;
+      font-weight: 600;
+      padding: 4px 6px;
+      border-radius: 8px;
+      margin: 4px 0 4px;
       display: inline-block;
     }
+
     .tech-on {
-      background: #e5f7ea;
-      border-left: 4px solid #2e7d32;
+      background: var(--accent-on);
+      color: #14532d;
+      border: 1px solid var(--border-on);
     }
+
     .tech-off {
-      background: #ffecec;
-      border-left: 4px solid #c62828;
+      background: var(--accent-off);
+      color: #7f1d1d;
+      border: 1px solid var(--border-off);
     }
-    .day-section {
-      background: #ffffff;
-      border-radius: 10px;
-      padding: 16px 18px;
-      margin-bottom: 18px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.06);
-      page-break-inside: avoid;
-    }
-    .day-label {
-      font-weight: bold;
-      font-size: 18px;
-      margin-bottom: 8px;
-      color: #111;
-    }
-    .block-title {
-      font-weight: bold;
-      margin-top: 10px;
-      margin-bottom: 4px;
-      font-size: 14px;
-      color: #333;
-    }
-    .checklist-item {
-      font-size: 13px;
-      margin: 2px 0;
+
+    .item {
       display: flex;
       align-items: flex-start;
       gap: 6px;
+      margin: 2px 0;
+      font-size: 11px;
+      line-height: 1.4;
     }
-    .checklist-item input {
+
+    .item input[type="checkbox"] {
       margin-top: 2px;
+      flex-shrink: 0;
+      width: 14px;
+      height: 14px;
     }
+
     .quote {
-      font-size: 12px;
+      font-size: 9px;
       font-style: italic;
-      color: #555;
-      margin-left: 22px;
-      margin-bottom: 4px;
+      color: var(--text-sub);
+      margin: 1px 0 2px 20px;
     }
+
     details {
-      margin-left: 22px;
-      margin-top: 2px;
-      margin-bottom: 4px;
-      font-size: 12px;
+      margin: 2px 0 2px 20px;
+      font-size: 9px;
     }
+
     details summary {
       cursor: pointer;
-      font-weight: bold;
-      color: #444;
+      list-style: none;
+      font-weight: 600;
+      color: #374151;
     }
+
+    details summary::-webkit-details-marker {
+      display: none;
+    }
+
     details ul {
-      margin: 4px 0 0 16px;
-      padding: 0;
+      padding-left: 14px;
+      margin: 2px 0;
     }
+
     details li {
       margin: 1px 0;
-      list-style-type: disc;
     }
-    .weekly-theme {
-      margin-top: 8px;
-      font-size: 12px;
-      color: #444;
+
+    .theme-list {
+      font-size: 9px;
+      color: var(--text-sub);
+      margin-top: 2px;
+      line-height: 1.4;
     }
-    .time-band-label {
-      font-size: 11px;
-      font-weight: bold;
-      margin: 4px 0 2px 0;
-      color: #555;
+
+    .pill {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: #eef2ff;
+      font-size: 8px;
+      margin: 1px 2px 0 0;
+    }
+
+    @media (min-width: 768px) {
+      body {
+        max-width: 480px;
+        margin: 0 auto;
+        padding: 16px;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Daily Checklist (Monday – Friday)</h1>
+  <h1>Daily Checklist</h1>
   <div class="meta">
-    Wake: 9:00 AM &nbsp;|&nbsp; Sleep: 10:00 PM &nbsp;|&nbsp;
-    3 Meals · No Snacks · Light Exercise · Meditation · Focused Self-Study · Origami Practice
+    Mon–Fri · Wake 9:00 AM · Sleep 10:00 PM<br>
+    3 Meals • No Snacks • Exercise • Meditation • Rubik's • Khan Academy • Origami
   </div>
   <div class="legend">
-    <span style="background:#e5f7ea;border:1px solid #2e7d32;">Tech-On (Allowed / Purposeful)</span>
-    <span style="background:#ffecec;border:1px solid #c62828;">Tech-Off (No Devices)</span>
+    <span style="background:#e5f7ea;border-color:#22a05a;">Tech-On = Allowed / Purposeful</span>
+    <span style="background:#ffecec;border-color:#e53935;">Tech-Off = No Devices</span>
+  </div>
+  <div class="screen-note">
+    Tip: Scroll top-to-bottom. Check items as you go. All times are flexible anchors, not chains.
   </div>
 
-  <!-- Template applies Monday–Friday identically -->
-  <div class="day-section">
-    <div class="day-label">Monday – Friday Schedule</div>
+  <!-- Morning -->
+  <div class="card">
+    <div class="card-title">
+      <span>🌅 Morning Routine</span>
+      <span class="time">9:00 – 11:00</span>
+    </div>
+    <div class="band-label tech-off">📵 Tech-Off — no phone or computer.</div>
 
-    <!-- Morning: Tech-Off -->
-    <div class="block-title">🌅 Morning Routine (9:00 AM – 11:00 AM)</div>
-    <div class="time-band-label tech-off">📵 Tech-Off (9:00 – 11:00) — No phone or computer.</div>
-    <label class="checklist-item"><input type="checkbox">9:00 – Wake &amp; ground (water, make bed, open window)</label>
-    <label class="checklist-item"><input type="checkbox">9:10 – Morning affirmation &amp; reflection</label>
-    <label class="checklist-item"><input type="checkbox">9:30 – 10:00 – 30 min light exercise (stretch / walk / yoga)</label>
-    <label class="checklist-item"><input type="checkbox">10:00 – Breakfast (mindful, no screens)</label>
-    <label class="checklist-item"><input type="checkbox">10:30 – Plan the day in notebook (top 3 priorities)</label>
+    <label class="item">
+      <input type="checkbox">
+      <span>9:00 – Wake &amp; ground (water, make bed, open window).</span>
+    </label>
+    <label class="item">
+      <input type="checkbox">
+      <span>9:10 – Morning affirmation &amp; reflection.</span>
+    </label>
+    <div class="quote">“The Master acts without doing, and everything gets done.” — Tao Te Ching</div>
+    <div class="quote">“You have power over your mind — not outside events.” — Marcus Aurelius</div>
+
+    <label class="item">
+      <input type="checkbox">
+      <span>9:30 – 10:00 – 30 min light exercise (stretch, walk, or yoga).</span>
+    </label>
+    <label class="item">
+      <input type="checkbox">
+      <span>10:00 – Breakfast (mindful, no screens).</span>
+    </label>
+    <label class="item">
+      <input type="checkbox">
+      <span>10:30 – Plan the day (write top 3 priorities in notebook).</span>
+    </label>
+
     <details>
-      <summary>📖 Optional Reading (10:45 – 11:00)</summary>
+      <summary>📖 Optional reading (10:45 – 11:00)</summary>
       <ul>
         <li><em>Meditations</em> — Marcus Aurelius</li>
-        <li><em>Tao Te Ching</em> — Lao Tzu (Stephen Mitchell translation)</li>
+        <li><em>Tao Te Ching</em> — Lao Tzu</li>
         <li><em>The Daily Stoic</em> — Ryan Holiday</li>
       </ul>
     </details>
+  </div>
 
-    <!-- Midday: Mixed -->
-    <div class="block-title">☀️ Midday Focus (11:00 AM – 2:00 PM)</div>
-    <div class="time-band-label tech-on">💻 Tech-On (11:00 – 12:00) — Study tools allowed.</div>
-    <label class="checklist-item"><input type="checkbox">11:00 – 12:00 – Self-Study #1: Rubik’s Cube (algorithms, pattern recognition, timing)</label>
+  <!-- Midday -->
+  <div class="card">
+    <div class="card-title">
+      <span>☀️ Midday Focus</span>
+      <span class="time">11:00 – 2:00</span>
+    </div>
 
-    <label class="checklist-item"><input type="checkbox">12:00 – Reflection quote: “An investment in knowledge pays the best interest.” — Benjamin Franklin</label>
+    <div class="band-label tech-on">💻 Tech-On — tools allowed for learning.</div>
+    <label class="item">
+      <input type="checkbox">
+      <span>11:00 – 12:00 – Self-Study #1: Rubik’s Cube (patterns, algorithms, timing).</span>
+    </label>
 
-    <div class="time-band-label tech-off">📵 Tech-Off (12:30 – 1:00) — Mindful lunch.</div>
-    <label class="checklist-item"><input type="checkbox">12:30 – Lunch (no phone, no scrolling, gratitude before eating)</label>
+    <label class="item">
+      <input type="checkbox">
+      <span>12:00 – Reflect on: “An investment in knowledge pays the best interest.” — Benjamin Franklin.</span>
+    </label>
+
+    <div class="band-label tech-off">📵 Tech-Off — mindful lunch.</div>
+    <label class="item">
+      <input type="checkbox">
+      <span>12:30 – Lunch (no screens, gratitude before eating).</span>
+    </label>
     <details>
-      <summary>📖 Optional Reading (12:45 – 1:00)</summary>
+      <summary>📖 Optional reading (12:45 – 1:00)</summary>
       <ul>
         <li><em>Letters from a Stoic</em> — Seneca</li>
         <li><em>Stillness is the Key</em> — Ryan Holiday</li>
       </ul>
     </details>
 
-    <div class="time-band-label tech-on">💻 Tech-On (1:00 – 2:00) — Purposeful only.</div>
-    <label class="checklist-item"><input type="checkbox">1:00 – 2:00 – Self-Study #2: Khan Academy (1 focused course/module)</label>
+    <div class="band-label tech-on">💻 Tech-On — focused only.</div>
+    <label class="item">
+      <input type="checkbox">
+      <span>1:00 – 2:00 – Self-Study #2: Khan Academy (1 focused module).</span>
+    </label>
+  </div>
 
-    <!-- Afternoon: Origami Research & Practice -->
-    <div class="block-title">🌇 Afternoon Rhythm (2:00 PM – 6:00 PM)</div>
-    <div class="time-band-label tech-on">💻 Tech-On (2:00 – 3:00) — Research allowed.</div>
-    <label class="checklist-item"><input type="checkbox">
-      2:00 – 3:00 – Self-Study #3: Ancient Chinese Origami Research
-      (history, symbolism, traditional folds)
+  <!-- Afternoon -->
+  <div class="card">
+    <div class="card-title">
+      <span>🌇 Afternoon – Origami & Deep Work</span>
+      <span class="time">2:00 – 6:00</span>
+    </div>
+
+    <div class="band-label tech-on">💻 Tech-On — research allowed.</div>
+    <label class="item">
+      <input type="checkbox">
+      <span>2:00 – 3:00 – Self-Study #3: Ancient Chinese Origami research (origins, symbolism, traditions).</span>
     </label>
     <details>
-      <summary>🔍 Suggested Research Threads</summary>
+      <summary>🔍 Research prompts</summary>
       <ul>
-        <li>Origins of paper folding in China and its relationship to ceremony and art.</li>
-        <li>Symbolism of cranes, lotus, and other traditional folded forms.</li>
-        <li>Comparison between early Chinese folding traditions and later Japanese origami.</li>
+        <li>Origins of paper folding in China and ritual uses.</li>
+        <li>Symbolism of cranes, lotus, and traditional forms.</li>
+        <li>Compare Chinese folding traditions with Japanese origami.</li>
       </ul>
     </details>
 
-    <div class="time-band-label tech-off">📵 Tech-Off (3:00 – 4:00) — Hands-on deep work.</div>
-    <label class="checklist-item"><input type="checkbox">
-      3:00 – 4:00 – Deep Work: Origami Practice
-      (fold models from your research; work slowly and precisely)
+    <div class="band-label tech-off">📵 Tech-Off — hands-on deep work.</div>
+    <label class="item">
+      <input type="checkbox">
+      <span>3:00 – 4:00 – Deep Work: Origami practice (fold slowly, precisely; 1–2 models).</span>
     </label>
 
-    <div class="time-band-label tech-off">📵 Tech-Off (4:00 – 5:30) — Reset & reading.</div>
-    <label class="checklist-item"><input type="checkbox">4:00 – Short reset (walk, stretch, breathe)</label>
+    <div class="band-label tech-off">📵 Tech-Off — reset & read.</div>
+    <label class="item">
+      <input type="checkbox">
+      <span>4:00 – Short reset (walk, stretch, breathe).</span>
+    </label>
     <details>
-      <summary>📖 Reading Block (4:30 – 5:15)</summary>
+      <summary>📖 Reading block (4:30 – 5:15)</summary>
       <ul>
         <li><em>Man’s Search for Meaning</em> — Viktor E. Frankl</li>
         <li><em>The Book of Joy</em> — Dalai Lama &amp; Desmond Tutu</li>
         <li><em>Atomic Habits</em> — James Clear</li>
       </ul>
     </details>
-    <label class="checklist-item"><input type="checkbox">5:30 – Dinner (no devices, slow and present)</label>
 
-    <!-- Evening -->
-    <div class="block-title">🌙 Evening Wind-Down (6:00 PM – 10:00 PM)</div>
-    <div class="time-band-label tech-off">📵 Tech-Off (6:00 – 8:30) — Deep rest & analog time.</div>
-    <label class="checklist-item"><input type="checkbox">
-      6:00 – 7:00 – Leisure / creative time
-      (journaling, sketching, origami, music, conversation)
+    <label class="item">
+      <input type="checkbox">
+      <span>5:30 – Dinner (no devices, eat slowly, notice taste & breathing).</span>
     </label>
-    <label class="checklist-item"><input type="checkbox">7:00 – 7:30 – 30 min meditation (breath, body scan, or guided)</label>
-    <label class="checklist-item"><input type="checkbox">7:30 – 8:15 – Reflection & reading (3 wins, 1 improvement)</label>
+  </div>
+
+  <!-- Evening -->
+  <div class="card">
+    <div class="card-title">
+      <span>🌙 Evening Wind-Down</span>
+      <span class="time">6:00 – 10:00</span>
+    </div>
+
+    <div class="band-label tech-off">📵 Tech-Off — 6:00 – 8:30.</div>
+    <label class="item">
+      <input type="checkbox">
+      <span>6:00 – 7:00 – Leisure / creative time (journal, sketch, origami, conversation).</span>
+    </label>
+    <label class="item">
+      <input type="checkbox">
+      <span>7:00 – 7:30 – Meditation (30 min).</span>
+    </label>
+    <label class="item">
+      <input type="checkbox">
+      <span>7:30 – 8:15 – Reflection (3 wins, 1 improvement) & quiet reading.</span>
+    </label>
     <details>
-      <summary>📖 Evening Reading Suggestions</summary>
+      <summary>📖 Evening reading</summary>
       <ul>
         <li><em>The Four Agreements</em> — Don Miguel Ruiz</li>
         <li><em>The Untethered Soul</em> — Michael A. Singer</li>
@@ -213,25 +357,37 @@
       </ul>
     </details>
 
-    <div class="time-band-label tech-on">💻 Light Tech (8:30 – 9:30) — Audio only.</div>
-    <label class="checklist-item"><input type="checkbox">
-      8:30 – 9:30 – Optional: calming audiobook or instrumental music
-      (no social media, no infinite scrolling)
+    <div class="band-label tech-on">💻 Light Tech — 8:30 – 9:30 (audio only).</div>
+    <label class="item">
+      <input type="checkbox">
+      <span>8:30 – 9:30 – Calm audiobook or instrumental music (no scrolling).</span>
     </label>
 
-    <div class="time-band-label tech-off">📵 Tech-Off (9:30 – 10:00) — Close the day.</div>
-    <label class="checklist-item"><input type="checkbox">9:30 – Night affirmation &amp; gratitude</label>
+    <div class="band-label tech-off">📵 Tech-Off — 9:30 – 10:00.</div>
+    <label class="item">
+      <input type="checkbox">
+      <span>9:30 – Night affirmation & gratitude.</span>
+    </label>
     <div class="quote">“Waste no more time arguing what a good man should be. Be one.” — Marcus Aurelius</div>
     <div class="quote">“A journey of a thousand miles begins with a single step.” — Tao Te Ching</div>
-    <label class="checklist-item"><input type="checkbox">10:00 – Sleep (no screens, slow breathing, lights out)</label>
+    <label class="item">
+      <input type="checkbox">
+      <span>10:00 – Sleep (no screens, slow breathing, lights out).</span>
+    </label>
+  </div>
 
-    <!-- Weekly Themes -->
-    <div class="block-title">💡 Weekly Themes (Applies Across All Days)</div>
-    <div class="weekly-theme"><strong>Monday – Clarity:</strong> Begin with order and intention.</div>
-    <div class="weekly-theme"><strong>Tuesday – Discipline:</strong> “Well done is better than well said.” — Benjamin Franklin</div>
-    <div class="weekly-theme"><strong>Wednesday – Learning:</strong> Treat Rubik’s, Khan Academy, and origami as training the mind.</div>
-    <div class="weekly-theme"><strong>Thursday – Gratitude:</strong> Notice consistency and progress, not perfection.</div>
-    <div class="weekly-theme"><strong>Friday – Reflection:</strong> Review the system, adjust one small thing for next week.</div>
+  <!-- Weekly Themes -->
+  <div class="card">
+    <div class="card-title">
+      <span>💡 Weekly Themes</span>
+    </div>
+    <div class="theme-list">
+      <div><span class="pill">Mon</span> Clarity – Begin with order and calm.</div>
+      <div><span class="pill">Tue</span> Discipline – “Well done is better than well said.” — B. Franklin</div>
+      <div><span class="pill">Wed</span> Learning – Treat Rubik’s, Khan, and origami as training.</div>
+      <div><span class="pill">Thu</span> Gratitude – Notice consistency, not perfection.</div>
+      <div><span class="pill">Fri</span> Reflection – Review, adjust one small thing for next week.</div>
+    </div>
   </div>
 </body>
 </html>
